@@ -15,6 +15,7 @@ import { Roles } from "./Roles";
 import { ServerStats } from "./ServerStats";
 import { WorkersTable } from "./WorkersTable";
 import { Separator } from "./ui/separator";
+import Spinner from "./Spinner";
 // import Spinner from "./Spinner";
 
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
@@ -111,7 +112,16 @@ export function Data({ region }: DataProps) {
             <WorkersTable workers={data.results.stats.server.workers} />
           </div>
         </CardContent>
-      ) : null}
+      ) : connected ? (
+        <div className="flex flex-col items-center justify-center w-full h-full gap-4 bg-popover-foreground">
+          <Spinner />
+          <p className="animate-pulse">Waiting for message...</p>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center w-full h-full bg-popover-foreground">
+          <p>No connection...</p>
+        </div>
+      )}
     </Card>
   );
 }
