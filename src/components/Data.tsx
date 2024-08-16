@@ -105,7 +105,7 @@ export function Data({ region }: DataProps) {
             </div>
           </div>
           <Separator className="my-4" />
-          <div className="flex-1 w-full">
+          <div className="flex-1 w-full min-h-[300px]">
             <ServerStats stats={data.results.stats} />
           </div>
           <div className="w-full">

@@ -8,7 +8,7 @@ import {
 } from "./ui/chart";
 import { ServerData } from "../utils/types";
 
-const MARGIN = { top: 0, right: 25, bottom: 25, left: 0 };
+const MARGIN = { top: 0, right: 5, bottom: 25, left: -25 };
 
 const chartConfig = {
   load: {
