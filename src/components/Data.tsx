@@ -29,7 +29,7 @@ export function Data({ region }: DataProps) {
   const [lastMessage, setLastMessage] = useState("");
   const [timeConnected, setTimeConnected] = useState<string>("");
 
-  const socket = useSocket(`ws://${SERVER_HOST}/${region}`);
+  const socket = useSocket(`wss://${SERVER_HOST}/${region}`);
 
   useEffect(() => {
     if (!socket) return;
