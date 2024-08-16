@@ -1,6 +1,7 @@
 const SERVER_HOST = import.meta.env.VITE_SERVER_HOST;
 
 export async function getRegions(): Promise<string[] | null> {
+  if (!SERVER_HOST) return null;
   try {
     const res = await fetch(`http://${SERVER_HOST}/regions`);
     return await res.json();
