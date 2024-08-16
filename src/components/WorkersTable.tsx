@@ -1,3 +1,4 @@
+import { useWorkersTable } from "../utils/useWorkersTable";
 import {
   Table,
   TableBody,
@@ -7,26 +8,14 @@ import {
   TableHeader,
   TableRow,
 } from "../components/ui/table";
-import { ServerData } from "../utils/types";
-import { useMemo } from "react";
+import { Workers } from "../utils/types";
 
 interface WorkersTableProps {
-  workers: ServerData["results"]["stats"]["server"]["workers"];
+  workers: Workers;
 }
 
 export function WorkersTable({ workers }: WorkersTableProps) {
-  const data = useMemo(() => {
-    return workers.map(([key, value]) => {
-      return {
-        name: key,
-        workers: value.workers,
-        waiting: value.waiting,
-        idle: value.idle,
-        wait_time: value.wait_time,
-        ttr: value.time_to_return,
-      };
-    });
-  }, [workers]);
+  const data = useWorkersTable(workers);
 
   return (
     <Table className="w-full">
@@ -44,6 +33,7 @@ export function WorkersTable({ workers }: WorkersTableProps) {
       <TableBody>
         {data.map((worker, index) => (
           <TableRow
+            key={`${worker.name}-${index}`}
             className={`${
               index % 2 === 0 ? "bg-background" : "bg-popover-foreground"
             }`}

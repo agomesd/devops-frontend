@@ -34,3 +34,5 @@ export type ServerData = {
     };
   };
 };
+
+export type Workers = ServerData["results"]["stats"]["server"]["workers"];

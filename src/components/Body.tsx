@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Data } from "./Data";
 import { RegionList } from "./RegionList";
 
-export default function Body() {
+export function Body() {
   const [region, setRegion] = useState<string>("");
 
   return (
